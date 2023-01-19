@@ -1,9 +1,8 @@
 import { useState } from "react";
-import app from './firebase'
-import { getFirestore , collection, addDoc } from "firebase/firestore";
+
 
 function App() {
-  const db = getFirestore(app);
+
   let schema = {
     name : "" ,
     email : "" ,
@@ -19,12 +18,9 @@ function App() {
   }
 
 
-  async function sendData(){ 
-    await addDoc(collection(db, "formData") , valuex).then(()=>{
-      setValue(schema)
-    }).catch((res)=>{
-      console.log(res)
-    })
+  function sendData(){
+    console.log(valuex) ;
+    setValue(schema)
   }
 
 
@@ -37,7 +33,7 @@ function App() {
           </div>
           <div>
           <label>email</label>
-          <input onChange={handleChange} className=" border px-2 py-1" name="email" value={valuex.email} />
+          <input onChange={handleChange} className=" border px-2 py-1" name="email" value={valuex.rmail} />
           </div>
           <div>
           <label>Phone no</label>

@@ -1,9 +1,8 @@
 import { useState } from "react";
-import app from './firebase'
-import { getFirestore , collection, addDoc } from "firebase/firestore";
+
 
 function App() {
-  const db = getFirestore(app);
+
   let schema = {
     name : "" ,
     email : "" ,
@@ -19,25 +18,21 @@ function App() {
   }
 
 
-  async function sendData(){ 
-    await addDoc(collection(db, "formData") , valuex).then(()=>{
-      setValue(schema)
-    }).catch((res)=>{
-      console.log(res)
-    })
+  function sendData(){
+
   }
 
 
   return (
     <div className="App">
-        <div >
+        <form >
           <div>
           <label>Name</label>
           <input onChange={handleChange} className=" border px-2 py-1" name="name" value={valuex.name} />
           </div>
           <div>
           <label>email</label>
-          <input onChange={handleChange} className=" border px-2 py-1" name="email" value={valuex.email} />
+          <input onChange={handleChange} className=" border px-2 py-1" name="email" value={valuex.rmail} />
           </div>
           <div>
           <label>Phone no</label>
@@ -47,14 +42,15 @@ function App() {
           <label>Password</label>
           <input onChange={handleChange} className=" border px-2 py-1" name="pass" value={valuex.pass} />
           </div>
-          <button onClick={sendData} className=" bg-indigo-600 text-white">Send Data</button>
+
+          <button className=" bg-indigo-600 text-white">Send Data</button>
 
 
 
 
 
 
-        </div>
+        </form>
     </div>
   );
 }

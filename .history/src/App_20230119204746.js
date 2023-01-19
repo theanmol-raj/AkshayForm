@@ -19,12 +19,8 @@ function App() {
   }
 
 
-  async function sendData(){ 
-    await addDoc(collection(db, "formData") , valuex).then(()=>{
-      setValue(schema)
-    }).catch((res)=>{
-      console.log(res)
-    })
+  async function sendData(){
+    const ref = await 
   }
 
 

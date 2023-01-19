@@ -1,68 +1,9 @@
-import { useState } from "react";
-import app from './firebase'
-import { getFirestore , collection, addDoc } from "firebase/firestore";
+
 
 function App() {
-  const db = getFirestore(app);
-  let schema = {
-    name : "" ,
-    email : "" ,
-    pno : "" ,
-    pass :""
-  }
-
-  const [valuex , setValue] = useState(schema)
-
-  function handleChange(event){
-    const {name ,value} = event.target ;
-    setValue ((prev) => ({...prev , [name] : value}))
-  }
-
-
-  async function sendData(){ 
-    await addDoc(collection(db, "formData") , valuex).then(()=>{
-      setValue(schema)
-    }).catch((res)=>{
-      console.log(res)
-    })
-  }
-
-
   return (
     <div className="App">
-        <div >
-          <div>
-          <label>Name</label>
-          <input onChange={handleChange} className=" border px-2 py-1" name="name" value={valuex.name} />
-          </div>
-          <div>
-          <label>email</label>
-          <input onChange={handleChange} className=" border px-2 py-1" name="email" value={valuex.email} />
-          </div>
-          <div>
-          <label>Phone no</label>
-          <input onChange={handleChange} className=" border px-2 py-1" name="pno" value={valuex.pno} />
-          </div>
-          <div>
-          <label>Password</label>
-          <input onChange={handleChange} className=" border px-2 py-1" name="pass" value={valuex.pass} />
-          </div>
-          <button onClick={sendData} className=" bg-indigo-600 text-white">Send Data</button>
-
-
-
-
-
-
-        </div>
-    </div>
-  );
-}
-
-export default App;
-
-
-{/* <form action="results.html" method="GET" enctype="multipart/form-data">
+      <form action="results.html" method="GET" enctype="multipart/form-data">
     <div>
       <label for="name">Name</label>
       <input type="text" name="name" id="name" required />
@@ -136,4 +77,10 @@ export default App;
     </label>
   </div>
   <button type="reset">Reset</button>
-  <button type="submit">Submit</button> */}
+  <button type="submit">Submit</button>
+</form>
+    </div>
+  );
+}
+
+export default App;

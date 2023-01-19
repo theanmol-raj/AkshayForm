@@ -1,6 +1,6 @@
 import { useState } from "react";
 import app from './firebase'
-import { getFirestore , collection, addDoc } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
 function App() {
   const db = getFirestore(app);
@@ -19,12 +19,9 @@ function App() {
   }
 
 
-  async function sendData(){ 
-    await addDoc(collection(db, "formData") , valuex).then(()=>{
-      setValue(schema)
-    }).catch((res)=>{
-      console.log(res)
-    })
+  async function sendData(){
+    console.log(valuex) ;
+    setValue(schema)
   }
 
 
